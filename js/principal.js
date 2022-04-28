@@ -1,8 +1,6 @@
-var titulo = document.querySelector(".titulo-principal");
-titulo.textContent = "Buena Vida Nutrición";
-
 var pacientes = document.querySelectorAll(".paciente");
 var paciente;
+
 for (var i = 0; i < pacientes.length; i++){
     paciente = pacientes[i];
 
