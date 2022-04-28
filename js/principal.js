@@ -2,9 +2,9 @@ var titulo = document.querySelector(".titulo-principal");
 titulo.textContent = "Buena Vida Nutrición";
 
 var pacientes = document.querySelectorAll(".paciente");
-
+var paciente;
 for (var i = 0; i < pacientes.length; i++){
-    var paciente = pacientes[i];
+    paciente = pacientes[i];
 
     var tdPeso = paciente.querySelector(".info-peso");
     var peso = tdPeso.textContent;
@@ -28,6 +28,7 @@ function esPesoValido(peso){
     if (peso <= 0 || peso > 700){
         esPesoValido = false;
         tdIMC.textContent = "Peso incorrecto";
+        paciente.classList.add("paciente-incorrecto");
     }
     return esPesoValido;
 }
@@ -37,6 +38,7 @@ function esAlturaValida(altura){
     if (altura <= 0 || altura > 3.0){
         esAlturaValida = false;
         tdIMC.textContent = "Altura incorrecta";
+        paciente.classList.add("paciente-incorrecto");
     }
     return esAlturaValida;
 }
