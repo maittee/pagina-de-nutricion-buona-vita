@@ -37,9 +37,9 @@ function calcularIMC(peso, altura){
 }
 
 function esPesoValido(peso){
-   return peso > 0 && peso < 700;
+   return peso >= 0 && peso < 700;
 }
 
 function esAlturaValida(altura){
-  return altura > 0 && altura < 3.0;
+  return altura >= 0 && altura < 3.0;
 }

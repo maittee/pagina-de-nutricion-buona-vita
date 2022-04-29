@@ -6,10 +6,9 @@ btnAdicionar.addEventListener("click", function(event){
     var form = document.querySelector("#form-adicionar");
     var paciente = capturarDatosDePaciente(form);
     var pacienteTr = construirTr(paciente);
-    
-    var error = !esPacienteValido(paciente);
+
     var errores = validarPaciente(paciente);
-    if (error && errores.length > 0){
+    if (errores.length > 0){
         exhibirMensajesDeErrores(errores);
         return;
     }
@@ -17,6 +16,9 @@ btnAdicionar.addEventListener("click", function(event){
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
     form.reset();
+    
+    var mensajesErrores = document.querySelector("#mensajes-errores");
+    mensajesErrores.innerHTML = "";
 });
 
 function capturarDatosDePaciente(form){
@@ -58,9 +60,31 @@ function esPacienteValido(paciente){
 
 function validarPaciente(paciente){
     var errores = [];
+    
+    if (paciente.nombre.length == 0){
+        errores.push("El nombre no puede estar vacío");
+    }
+    
+    if (paciente.peso.length == 0){
+        errores.push("El peso no puede estar vacío");
+    }
+    
+    if (paciente.altura.length == 0){
+        errores.push("La altura no puede estar vacía");
+    }
+    
+    if (paciente.gordura.length == 0){
+        errores.push("El % de gordura no puede estar vacío");
+    }
+    
+    if (paciente.gordura < 0){
+        errores.push("El % de gordura no puede ser negativo");
+    }
+    
     if (!esPesoValido(paciente.peso)){
         errores.push("El peso es incorrecto");
     } 
+    
     if (!esAlturaValida(paciente.altura)){
         errores.push("La altura es incorrecta");
     }
@@ -69,7 +93,7 @@ function validarPaciente(paciente){
 
 function exhibirMensajesDeErrores(errores){
     var ul = document.querySelector("#mensajes-errores");
-    
+    ul.innerHTML = "";
     errores.forEach(function(error){
         var li = document.createElement("li");
         li.textContent = error;
