@@ -5,21 +5,25 @@ btnAdicionar.addEventListener("click", function(event){
     
     var form = document.querySelector("#form-adicionar");
     var paciente = capturarDatosDePaciente(form);
-    var pacienteTr = construirTr(paciente);
 
     var errores = validarPaciente(paciente);
     if (errores.length > 0){
         exhibirMensajesDeErrores(errores);
         return;
     }
-
-    var tabla = document.querySelector("#tabla-pacientes");
-    tabla.appendChild(pacienteTr);
+    
+    adicionarPaciente(paciente);
     form.reset();
     
     var mensajesErrores = document.querySelector("#mensajes-errores");
     mensajesErrores.innerHTML = "";
 });
+
+function adicionarPaciente(paciente){
+    var pacienteTr = construirTr(paciente);
+    var tabla = document.querySelector("#tabla-pacientes");
+    tabla.appendChild(pacienteTr);
+}
 
 function capturarDatosDePaciente(form){
     // captura de los datos del formulario
