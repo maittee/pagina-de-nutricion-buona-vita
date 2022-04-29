@@ -20,6 +20,7 @@ header h1 {
 	display:inline-block;
 	vertical-align:	middle;
 }
+
 header h2 {
 	font-size: 2em;
 	display:inline-block;
@@ -53,8 +54,8 @@ section h2 {
 }
 
 .info {
-	font-size: 15px;
-	margin: 0 0 15px;
+	font-size: 12px;
+	margin-bottom: 15px;
 	color: rgb(95, 95, 95);
 }
 
@@ -155,4 +156,14 @@ button[disabled=disabled], button:disabled {
 .fadeOut {
 	opacity: 0;
 	transition: 0.5s;
+}
+
+#filtrar-tabla {
+	width: 200px;
+	height: 35px;
+	margin-bottom: 10px;
+}
+
+.invisible {
+	display: none;
 }
