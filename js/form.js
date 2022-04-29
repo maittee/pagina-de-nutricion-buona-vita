@@ -8,13 +8,12 @@ btnAdicionar.addEventListener("click", function(event){
     var pacienteTr = construirTr(paciente);
     
     var error = !esPacienteValido(paciente);
-    if (error){
-        var msjError = document.querySelector("#mensaje-error");
-        msjError.textContent = mensajeDeError();
+    var errores = validarPaciente(paciente);
+    if (error && errores.length > 0){
+        exhibirMensajesDeErrores(errores);
         return;
     }
 
-    
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
     form.reset();
@@ -57,6 +56,23 @@ function esPacienteValido(paciente){
     return esPesoValido(paciente.peso) && esAlturaValida(paciente.altura);
 }
 
-function mensajeDeError(){
-    return "El peso y/o la altura es incorrecta";
+function validarPaciente(paciente){
+    var errores = [];
+    if (!esPesoValido(paciente.peso)){
+        errores.push("El peso es incorrecto");
+    } 
+    if (!esAlturaValida(paciente.altura)){
+        errores.push("La altura es incorrecta");
+    }
+    return errores;
 }
+
+function exhibirMensajesDeErrores(errores){
+    var ul = document.querySelector("#mensajes-errores");
+    
+    errores.forEach(function(error){
+        var li = document.createElement("li");
+        li.textContent = error;
+        ul.appendChild(li);
+    });
+}   
