@@ -6,12 +6,19 @@ botonBuscar.addEventListener("click", function(){
     
     // este evento es para nuestro objeto de requisicion
     xhr.addEventListener("load", function(){
-        var respuesta = xhr.responseText;
-        var pacientes = JSON.parse(respuesta);
-        
-        pacientes.forEach(function(paciente){
+        var errorAjax = document.querySelector("#error-ajax");
+    
+        if (xhr.status == 200){
+            errorAjax.classList.add("invisible");
+            var respuesta = xhr.responseText;
+            var pacientes = JSON.parse(respuesta);    
+            pacientes.forEach(function(paciente){
             adicionarPaciente(paciente);
-        });
+            });
+        } 
+        else {
+            errorAjax.classList.remove("invisible");
+        }
     });
     
     xhr.send();
