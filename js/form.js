@@ -6,6 +6,15 @@ btnAdicionar.addEventListener("click", function(event){
     var form = document.querySelector("#form-adicionar");
     var paciente = capturarDatosDePaciente(form);
     var pacienteTr = construirTr(paciente);
+    
+    var error = !esPacienteValido(paciente);
+    if (error){
+        var msjError = document.querySelector("#mensaje-error");
+        msjError.textContent = mensajeDeError();
+        return;
+    }
+
+    
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
     form.reset();
@@ -42,4 +51,12 @@ function construirTd(dato, clase){
     td.textContent = dato;
     
     return td;
+}
+
+function esPacienteValido(paciente){
+    return esPesoValido(paciente.peso) && esAlturaValida(paciente.altura);
+}
+
+function mensajeDeError(){
+    return "El peso y/o la altura es incorrecta";
 }
