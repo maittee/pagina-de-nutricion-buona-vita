@@ -62,31 +62,31 @@ function validarPaciente(paciente){
     var errores = [];
     
     if (paciente.nombre.length == 0){
-        errores.push("El nombre no puede estar vacío");
+        errores.push("⚠ El nombre no puede estar vacío");
     }
     
     if (paciente.peso.length == 0){
-        errores.push("El peso no puede estar vacío");
+        errores.push("⚠ El peso no puede estar vacío");
     }
     
     if (paciente.altura.length == 0){
-        errores.push("La altura no puede estar vacía");
+        errores.push("⚠ La altura no puede estar vacía");
     }
     
     if (paciente.gordura.length == 0){
-        errores.push("El % de gordura no puede estar vacío");
+        errores.push("⚠ El % de gordura no puede estar vacío");
     }
     
     if (paciente.gordura < 0){
-        errores.push("El % de gordura no puede ser negativo");
+        errores.push("⚠ El % de gordura no puede ser negativo");
     }
     
     if (!esPesoValido(paciente.peso)){
-        errores.push("El peso es incorrecto");
+        errores.push("⚠ El peso es incorrecto");
     } 
     
     if (!esAlturaValida(paciente.altura)){
-        errores.push("La altura es incorrecta");
+        errores.push("⚠ La altura es incorrecta");
     }
     return errores;
 }
